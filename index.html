@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lebenslauf anfordern – Philip Adam</title>
+<style>
+  :root{ --brand:#003366; --muted:#5f6b7a; --bg:#f6f8fb; --card:#fff; }
+  html,body{ margin:0; padding:0; font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; background:var(--bg); color:#111; }
+  .wrap{ max-width:760px; margin:0 auto; padding:24px; }
+  .card{ background:var(--card); border:1px solid #e6ebf0; border-left:6px solid var(--brand); border-radius:8px; padding:20px; box-shadow:0 6px 22px rgba(0,0,0,.05); }
+  h1{ margin:0 0 6px; color:var(--brand); font-size:22px; }
+  p.lead{ margin:0 0 18px; color:var(--muted); }
+  form{ margin-top:8px; }
+  .row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .col{ flex:1 1 240px; min-width:200px; }
+  label{ display:block; font-size:13px; margin-bottom:6px; color:#333; }
+  input[type="text"], input[type="email"], textarea{
+    width:100%; padding:10px 12px; border:1px solid #d7dee6; border-radius:6px; font-size:14px; box-sizing:border-box; background:#fff;
+  }
+  textarea{ min-height:110px; resize:vertical; }
+  .muted{ font-size:12px; color:var(--muted); margin-top:6px; }
+  .actions{ margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  button.primary{
+    background:var(--brand); color:#fff; border:none; padding:10px 14px; border-radius:6px; cursor:pointer; font-weight:600;
+  }
+  button.primary:disabled{ opacity:.5; cursor:not-allowed; }
+  .captcha{ display:flex; gap:8px; align-items:center; }
+  .chk{ display:flex; align-items:flex-start; gap:8px; margin-top:12px; }
+  .chk input{ margin-top:2px; }
+  .foot{ margin-top:16px; font-size:12px; color:var(--muted); line-height:1.5; }
+  .hr{ height:1px; background:#e6ebf0; margin:16px 0; }
+  .ok, .err{ display:none; margin-top:12px; padding:10px 12px; border-radius:6px; font-size:14px; }
+  .ok{ background:#e9f7ef; color:#0a6a3a; border:1px solid #cfeedb; }
+  .err{ background:#fff3f3; color:#8b2a2a; border:1px solid #f1c2c2; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-labelledby="title">
+      <h1 id="title">Lebenslauf anfordern – Philip Adam</h1>
+      <p class="lead">Maximale Transparenz: Diese Seite speichert keine Daten. Ihre Anfrage wird lokal in Ihrem E-Mail-Programm vorbereitet – Sie behalten die Kontrolle.</p>
+
+      <!-- KONFIG: hier deine E-Mail-Adresse eintragen -->
+      <form id="cvForm" novalidate data-target-email="philipadam86@gmail.com">
+        <div class="row">
+          <div class="col">
+            <label for="name">Name (Pflicht)</label>
+            <input id="name" name="name" type="text" placeholder="Vorname Nachname" required>
+          </div>
+          <div class="col">
+            <label for="email">E-Mail (Pflicht)</label>
+            <input id="email" name="email" type="email" placeholder="email@beispiel.de" required>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <label for="comment">Kommentar (optional)</label>
+          <textarea id="comment" name="comment" placeholder="Wie haben Sie diese Karte erhalten? (z. B. ‚Messe X‘, ‚Empfehlung Y‘)"></textarea>
+          <div class="muted">Optional – hilft mir, die Verbreitung der Karte besser einzuschätzen.</div>
+        </div>
+
+        <!-- Honeypot gegen Bots (unsichtbar) -->
+        <div style="display:none;">
+          <label>Nicht ausfüllen</label>
+          <input name="_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- Mini-Schutz -->
+        <div class="row" style="margin-top:12px; align-items:center;">
+          <div class="col" style="flex:0 0 auto;">
+            <label for="captcha" class="muted">Sicherheitsfrage</label>
+            <div class="captcha">
+              <span id="cq">3 + 7 =</span>
+              <input id="captcha" name="captcha" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ergebnis" style="width:90px;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Einwilligung / Transparenz -->
+        <div class="chk">
+          <input type="checkbox" id="consent" required>
+          <label for="consent">
+            Ich willige ein, dass meine Angaben (Name, E-Mail & optional Kommentar) ausschließlich zur Beantwortung meiner Anfrage und für die Zusendung des Lebenslaufs verwendet werden.
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary" id="sendBtn">E-Mail vorbereiten</button>
+          <span class="muted">Ihre Mail wird lokal geöffnet – kein Upload zu dieser Website.</span>
+        </div>
+
+        <div id="msgOk" class="ok">E-Mail-Entwurf geöffnet. Wenn Ihr Mailprogramm nicht startet, prüfen Sie bitte Ihre Standard-Mail-App oder schreiben Sie direkt an die angegebene Adresse.</div>
+        <div id="msgErr" class="err">Bitte füllen Sie alle Pflichtfelder korrekt aus und lösen Sie die Sicherheitsfrage.</div>
+      </form>
+
+      <div class="hr"></div>
+
+      <div class="foot" aria-label="Datenschutzhinweise">
+        <strong>Datenschutzhinweis (kurz):</strong>
+        <ul>
+          <li>Diese Seite speichert keine Formulardaten und setzt keine Tracking-Cookies.</li>
+          <li>Beim Klick auf „E-Mail vorbereiten“ wird ein E-Mail-Entwurf in Ihrer lokalen Mail-App geöffnet (mailto-Link). Sie behalten die Kontrolle, ob und was versendet wird.</li>
+          <li>Zweck: Zusendung des Lebenslaufs & einmalige Kontaktaufnahme.</li>
+          <li>Speicherdauer: Ihre Anfrage wird in meinem Postfach maximal 12 Monate vorgehalten oder auf Wunsch früher gelöscht.</li>
+          <li>Rechte: Auskunft, Berichtigung, Löschung – kurze Nachricht an die Antwortadresse genügt.</li>
+        </ul>
+        <div class="muted">Tipp: Auf Wunsch erhalten Sie einen zeitbegrenzten Download-Link, statt eines Dateianhangs.</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  // Einfache Rechenaufgabe (randomisiert)
+  const a = Math.floor(2 + Math.random()*8);
+  const b = Math.floor(2 + Math.random()*8);
+  const answer = a + b;
+  document.getElementById('cq').textContent = a + " + " + b + " =";
+
+  const form = document.getElementById('cvForm');
+  const btn  = document.getElementById('sendBtn');
+  const ok   = document.getElementById('msgOk');
+  const err  = document.getElementById('msgErr');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    ok.style.display = 'none';
+    err.style.display = 'none';
+
+    // Pflichtfelder
+    const name = (document.getElementById('name').value || '').trim();
+    const email = (document.getElementById('email').value || '').trim();
+    const comment = (document.getElementById('comment').value || '').trim();
+    const cap = (document.getElementById('captcha').value || '').trim();
+    const hp = (form.querySelector('[name="_hp"]').value || '').trim();
+    const consent = document.getElementById('consent').checked;
+
+    // Validierung
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const capOk = String(answer) === cap;
+
+    if (!name || !emailOk || !capOk || !consent || hp){
+      err.style.display = 'block';
+      return;
+    }
+
+    // mailto zusammenbauen (lokal beim Nutzer)
+    const to = form.dataset.targetEmail || 'philipadam86@gmail.com';
+    const subject = encodeURIComponent('Lebenslauf-Anfrage');
+    const lines = [
+      'Name: ' + name,
+      'E-Mail: ' + email,
+      comment ? ('Kommentar: ' + comment) : 'Kommentar: (nicht angegeben)',
+      '',
+      'Hinweis: Anfrage wurde über die Landingpage ausgelöst.'
+    ];
+    const body = encodeURIComponent(lines.join('\n'));
+
+    const href = `mailto:${to}?subject=${subject}&body=${body}`;
+    window.location.href = href;
+
+    ok.style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
