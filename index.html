@@ -3,16 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kontakt & Lebenslaufanforderung – Philip Adam</title>
+<title>vc · Philip Adam</title>
 <style>
   :root{ --brand:#003366; --muted:#5f6b7a; --bg:#f6f8fb; --card:#fff; }
-  html,body{ margin:0; padding:0; font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; background:var(--bg); color:#111; }
-  .wrap{ max-width:780px; margin:40px auto; padding:0 18px; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:#111; font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; }
+  .wrap{ max-width:820px; margin:40px auto; padding:0 18px; }
   .card{ background:var(--card); border:1px solid #e6ebf0; border-left:6px solid var(--brand); border-radius:10px; padding:22px; box-shadow:0 8px 26px rgba(0,0,0,.06); }
-  h1{ margin:0 0 6px; color:var(--brand); font-size:24px; font-weight:700; }
-  .sub{ margin:2px 0 14px; color:#223; font-size:15px; }
-  .lead{ margin:0 0 18px; color:var(--muted); font-size:14px; }
-  form{ margin-top:10px; }
+  h1{ margin:0 0 6px; color:var(--brand); font-size:22px; font-weight:700; letter-spacing:.2px; }
+  .muted{ color:var(--muted); }
   .row{ display:flex; gap:12px; flex-wrap:wrap; }
   .col{ flex:1 1 260px; min-width:200px; }
   label{ display:block; font-size:13px; margin-bottom:6px; color:#333; }
@@ -20,147 +18,193 @@
     width:100%; padding:10px 12px; border:1px solid #d7dee6; border-radius:8px; font-size:14px; box-sizing:border-box; background:#fff;
   }
   textarea{ min-height:110px; resize:vertical; }
-  .muted{ font-size:12px; color:var(--muted); margin-top:6px; }
-  .actions{ margin-top:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-  button.primary{ background:var(--brand); color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-weight:600; }
-  button.primary:disabled{ opacity:.55; cursor:not-allowed; }
-  .captcha{ display:flex; gap:8px; align-items:center; }
-  .chk{ display:flex; align-items:flex-start; gap:8px; margin-top:12px; }
-  .chk input{ margin-top:2px; }
-  .hr{ height:1px; background:#e6ebf0; margin:18px 0; }
-  .foot{ font-size:13px; color:var(--muted); line-height:1.5; }
-  .ok,.err{ display:none; margin-top:12px; padding:10px 12px; border-radius:8px; font-size:14px; }
-  .ok{ background:#e9f7ef; color:#0a6a3a; border:1px solid #cfeedb; }
-  .err{ background:#fff3f3; color:#8b2a2a; border:1px solid #f1c2c2; }
-  @media (max-width:540px){ .row{ flex-direction:column; } .col{ min-width:0 } }
+  .actions{ margin-top:14px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  button{ background:var(--brand); color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; font-weight:600; }
+  button:disabled{ opacity:.55; cursor:not-allowed; }
+  .hint{ font-size:12px; color:var(--muted); }
+  .sp{ height:16px; }
+  .err{ background:#fff3f3; color:#8b2a2a; border:1px solid #f1c2c2; padding:10px 12px; border-radius:8px; font-size:14px; display:none; }
+  .ok { background:#e9f7ef; color:#0a6a3a; border:1px solid #cfeedb; padding:10px 12px; border-radius:8px; font-size:14px; display:none; }
+  .hr{ height:1px; background:#e6ebf0; margin:16px 0; }
+  /* Hidden-by-default sections */
+  #profile, #contact{ display:none; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card" role="region" aria-labelledby="title">
-      <h1 id="title">Kontakt & Lebenslaufanforderung</h1>
-      <p class="sub"><strong>Philip Adam</strong> · Projektmanager mit Schwerpunkt Digitalisierung & Prozessgestaltung – verbindet operative Erfahrung mit strukturierter, technischer Umsetzung für nachhaltige Veränderungen.</p>
-      <p class="lead">Transparenz: Diese Seite speichert keine Formulardaten. Beim Absenden wird ein E-Mail-Entwurf in Ihrem Mailprogramm geöffnet – Sie behalten die Kontrolle. Ich sende den Lebenslauf <strong>persönlich</strong> als Antwort.</p>
+    <!-- GATE -->
+    <div class="card" id="gate">
+      <h1>Zugangscode</h1>
+      <p class="muted">Bitte den Code von der Visitenkarte eingeben.</p>
+      <div class="row" style="margin-top:10px;">
+        <div class="col" style="flex:0 0 220px;">
+          <label for="code">Code</label>
+          <input id="code" type="text" autocomplete="one-time-code" placeholder="z. B. AD-8621">
+        </div>
+      </div>
+      <div class="actions">
+        <button id="unlock">Anzeigen</button>
+        <span class="hint">Hinweis: Kein Tracking. Kein Upload. Reiner Sichtschutz.</span>
+      </div>
+      <div id="gateErr" class="err" style="margin-top:12px;">Code falsch. Bitte erneut versuchen.</div>
+    </div>
 
-      <!-- Formular -->
-      <form id="cvForm" novalidate>
+    <div class="sp"></div>
+
+    <!-- PROFILE (locked until code ok) -->
+    <div class="card" id="profile" role="region" aria-labelledby="p-title">
+      <h1 id="p-title">Kurzprofil — Philip Adam</h1>
+      <p class="muted" style="margin:2px 0 12px;">
+        Projektmanager mit Schwerpunkt Digitalisierung & Prozessgestaltung – verbindet operative Erfahrung mit strukturierter, technischer Umsetzung für nachhaltige Veränderungen.
+      </p>
+
+      <div class="hr"></div>
+
+      <div class="row" style="margin-top:6px;">
+        <div class="col">
+          <strong>Schwerpunkte</strong><br>
+          Digitalisierung von Prozessen · ERP (Business Central) · Transformation · Stakeholderführung · Shopfloor–IT-Brücke
+        </div>
+        <div class="col">
+          <strong>Technik</strong><br>
+          MS Dynamics 365 BC · AL · MDE/Scannerprozesse · Power BI · C#/C++ (Grundlagen)
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:10px;">
+        <div class="col">
+          <strong>Stärken</strong><br>
+          strukturierte Umsetzung · klare Kommunikation · Verantwortungsübernahme · Veränderungsführung
+        </div>
+        <div class="col">
+          <strong>Sprachen</strong><br>
+          Deutsch (C2), Englisch (B2)
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="muted">Für vollständige Projektdetails sende ich den ausführlichen CV gern auf Anfrage zu.</p>
+    </div>
+
+    <div class="sp"></div>
+
+    <!-- CONTACT (locked until code ok) -->
+    <div class="card" id="contact" role="region" aria-labelledby="c-title">
+      <h1 id="c-title">Kontakt</h1>
+      <p class="muted" style="margin:2px 0 12px;">Ihre Anfrage wird lokal in Ihrem E-Mail-Programm vorbereitet. Keine Datenspeicherung auf dieser Seite.</p>
+
+      <form id="contactForm" novalidate>
         <div class="row">
           <div class="col">
-            <label for="name">Name <span aria-hidden="true">*</span></label>
-            <input id="name" name="name" type="text" placeholder="Vorname Nachname" required>
+            <label for="name">Name *</label>
+            <input id="name" type="text" placeholder="Vorname Nachname" required>
           </div>
           <div class="col">
-            <label for="email">E-Mail <span aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" placeholder="email@beispiel.de" required>
+            <label for="email">E-Mail *</label>
+            <input id="email" type="email" placeholder="email@beispiel.de" required>
           </div>
         </div>
 
         <div style="margin-top:12px;">
-          <label for="comment">Kommentar (optional)</label>
-          <textarea id="comment" name="comment" placeholder="Wie haben Sie diese Karte erhalten? (z. B. Messe X, Empfehlung Y)"></textarea>
-          <div class="muted">Optional – hilft mir zu verstehen, wo die Karte wirkt.</div>
-        </div>
-
-        <!-- Honeypot (unsichtbar) -->
-        <div style="display:none;">
-          <label>Nicht ausfüllen</label>
-          <input name="_hp" tabindex="-1" autocomplete="off">
+          <label for="msg">Nachricht (optional)</label>
+          <textarea id="msg" placeholder="Wie haben Sie diese Karte erhalten? (z. B. Messe X / Empfehlung Y)"></textarea>
         </div>
 
         <!-- Mini-Schutz -->
         <div class="row" style="margin-top:12px; align-items:center;">
-          <div class="col" style="flex:0 0 auto;">
-            <label for="captcha" class="muted">Sicherheitsfrage</label>
-            <div class="captcha">
-              <span id="cq">4 + 6 =</span>
-              <input id="captcha" name="captcha" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="Ergebnis" style="width:120px;">
+          <div class="col" style="flex:0 0 220px;">
+            <label for="cap" class="muted">Sicherheitsfrage</label>
+            <div class="row" style="align-items:center;">
+              <div class="col" style="flex:0 0 120px;">
+                <input id="cap" type="text" inputmode="numeric" pattern="[0-9]*" placeholder="" aria-label="Ergebnis eingeben">
+              </div>
+              <div class="col" style="flex:1 1 auto;">
+                <span id="capQ" class="hint"></span>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Einwilligung -->
-        <div class="chk">
-          <input type="checkbox" id="consent" required>
-          <label for="consent">
-            Ich willige ein, dass meine Angaben (Name, E-Mail & optional Kommentar) zur Beantwortung meiner Anfrage verwendet werden. Keine Weitergabe an Dritte.
-          </label>
-        </div>
-
         <div class="actions">
-          <button type="submit" class="primary" id="sendBtn">E-Mail-Entwurf öffnen</button>
-          <span class="muted">Kein Upload, kein Tracking, keine Cookies.</span>
+          <button type="submit">E-Mail vorbereiten</button>
+          <span class="hint">Ich antworte persönlich mit dem ausführlichen CV.</span>
         </div>
 
-        <div id="msgOk" class="ok">Ein E-Mail-Entwurf wurde geöffnet. Ich sende den Lebenslauf <strong>persönlich</strong> in der Antwort.</div>
-        <div id="msgErr" class="err">Bitte Pflichtfelder prüfen und Sicherheitsfrage korrekt lösen.</div>
+        <div id="cErr" class="err" style="margin-top:12px;">Bitte Pflichtfelder prüfen und Sicherheitsfrage korrekt lösen.</div>
+        <div id="cOk"  class="ok"  style="margin-top:12px;">E-Mail-Entwurf geöffnet.</div>
       </form>
-
-      <div class="hr"></div>
-
-      <div class="foot" aria-label="Datenschutzhinweise">
-        <strong>Kurz-DSGVO:</strong>
-        <ul>
-          <li>Diese Seite speichert keine Formulardaten und setzt keine Tracking-Cookies.</li>
-          <li>Zweck: Zusendung des Lebenslaufs & einmalige Kontaktaufnahme.</li>
-          <li>Speicherdauer: Ihre E-Mail bleibt max. 12 Monate in meinem Postfach oder wird auf Wunsch gelöscht.</li>
-          <li>Rechte: Auskunft / Berichtigung / Löschung – kurze Antwortmail genügt.</li>
-        </ul>
-        <div class="muted">Hinweis: Auf Wunsch sende ich einen zeitbegrenzten Download-Link statt Anhang.</div>
-      </div>
     </div>
   </div>
 
 <script>
 (function(){
-  // --- E-Mail obfuscation: "adam.card.service@protonmail.com" ---
-  const codes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
-  const targetEmail = codes.map(c => String.fromCharCode(c)).join('');
+  // ====== CONFIG ======
+  // Universal-Code (auf Karte aufgedruckt):
+  const ACCESS_CODE = "AD-8621"; // <--- HIER DEINEN CODE SETZEN
+  // Ziel-Mail (verschleiert: "adam.card.service@protonmail.com")
+  const emailCodes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
+  const TARGET_MAIL = emailCodes.map(c => String.fromCharCode(c)).join('');
 
-  // Zufällige Captcha-Aufgabe
-  const a = Math.floor(2 + Math.random()*7); // 2..8
-  const b = Math.floor(1 + Math.random()*8); // 1..8
-  const answer = a + b;
-  document.getElementById('cq').textContent = a + " + " + b + " =";
+  // ====== Gate Logic ======
+  const codeInput = document.getElementById('code');
+  const unlockBtn = document.getElementById('unlock');
+  const gateErr = document.getElementById('gateErr');
+  const gate = document.getElementById('gate');
+  const profile = document.getElementById('profile');
+  const contact = document.getElementById('contact');
 
-  const form = document.getElementById('cvForm');
-  const ok   = document.getElementById('msgOk');
-  const err  = document.getElementById('msgErr');
+  unlockBtn.addEventListener('click', function(){
+    gateErr.style.display = 'none';
+    const val = (codeInput.value || '').trim();
+    if (!val) { gateErr.style.display = 'block'; return; }
+    if (val.toUpperCase() === ACCESS_CODE.toUpperCase()){
+      gate.style.display = 'none';
+      profile.style.display = 'block';
+      contact.style.display = 'block';
+      // Focus auf Name im Kontakt
+      setTimeout(()=> document.getElementById('name').focus(), 150);
+    } else {
+      gateErr.style.display = 'block';
+    }
+  });
 
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    ok.style.display = 'none';
-    err.style.display = 'none';
+  // ====== Kontakt (mailto) ======
+  // Captcha (klein, zufällig)
+  const a = Math.floor(2 + Math.random()*7), b = Math.floor(1 + Math.random()*8);
+  const ans = a + b;
+  document.getElementById('capQ').textContent = `Bitte lösen: ${a} + ${b} = ?`;
+  document.getElementById('cap').setAttribute('placeholder', `${a}+${b}=?`);
+
+  const form = document.getElementById('contactForm');
+  const cErr = document.getElementById('cErr');
+  const cOk  = document.getElementById('cOk');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    cErr.style.display = 'none';
+    cOk.style.display = 'none';
 
     const name = (document.getElementById('name').value || '').trim();
     const email = (document.getElementById('email').value || '').trim();
-    const comment = (document.getElementById('comment').value || '').trim();
-    const cap = (document.getElementById('captcha').value || '').trim();
-    const hp = (form.querySelector('[name="_hp"]').value || '').trim();
-    const consent = document.getElementById('consent').checked;
+    const msg = (document.getElementById('msg').value || '').trim();
+    const cap = (document.getElementById('cap').value || '').trim();
 
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const capOk = String(answer) === cap;
+    if (!name || !emailOk || String(ans) !== cap){ cErr.style.display = 'block'; return; }
 
-    if (!name || !emailOk || !capOk || !consent || hp){
-      err.style.display = 'block';
-      return;
-    }
-
-    // Mailto (lokal beim Besucher)
-    const to = encodeURIComponent(targetEmail);
-    const subject = encodeURIComponent('Lebenslauf-Anfrage: ' + name);
-    const lines = [
+    const subject = encodeURIComponent('Kontakt (VC) – ' + name);
+    const bodyLines = [
       'Name: ' + name,
       'E-Mail: ' + email,
-      comment ? ('Kommentar: ' + comment) : 'Kommentar: (nicht angegeben)',
+      msg ? ('Nachricht: ' + msg) : 'Nachricht: (nicht angegeben)',
       '',
-      'Hinweis: Anfrage über Landingpage. Ich bitte um Zusendung des Lebenslaufs.'
+      'Hinweis: Zugriff via vc-Seite mit gültigem Code.'
     ];
-    const body = encodeURIComponent(lines.join('\n'));
-    const href = `mailto:${to}?subject=${subject}&body=${body}`;
-
-    window.location.href = href; // öffnet Mailprogramm
-    ok.style.display = 'block';
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const href = `mailto:${encodeURIComponent(TARGET_MAIL)}?subject=${subject}&body=${body}`;
+    window.location.href = href;
+    cOk.style.display = 'block';
   });
 })();
 </script>
