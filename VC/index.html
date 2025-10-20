@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Philip Adam · Projektmanager (Digitalisierung & Prozesse)</title>
+
+<!-- Sicherheit (statisch, ohne externe Abhängigkeiten) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="index,follow">
+
+<style>
+  :root{
+    --brand:#003366; --muted:#5f6b7a; --bg:#f6f8fb; --card:#fff;
+    --ink:#111; --border:#e6ebf0; --shadow:0 8px 26px rgba(0,0,0,.06);
+  }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; }
+  .wrap{ max-width:820px; margin:40px auto; padding:0 18px; animation:fade .25s ease-out; }
+  .card{ background:var(--card); border:1px solid var(--border); border-left:6px solid var(--brand);
+    border-radius:12px; padding:24px; box-shadow:var(--shadow); }
+  h1{ margin:0 0 6px; color:var(--brand); font-size:26px; font-weight:800; letter-spacing:.2px; }
+  .role{ margin:.5px 0 14px; color:var(--muted); font-style:italic; }
+  .hr{ height:1px; background:var(--border); margin:18px 0; }
+  .grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  .label{ font-weight:700; color:#233; margin-bottom:6px; display:block; }
+  .muted{ color:var(--muted); }
+  .actions{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .btn{ background:var(--brand); color:#fff; border:none; padding:12px 16px; border-radius:10px;
+    font-weight:700; text-decoration:none; display:inline-block; cursor:pointer; }
+  .btn.secondary{ background:transparent; color:var(--brand); border:1px solid var(--brand); }
+  .btn:focus{ outline:2px solid #99b; outline-offset:2px; }
+  @keyframes fade{ from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <h1 id="title">Philip Adam</h1>
+      <div class="role">Projektmanager (Digitalisierung & Prozesse)</div>
+
+      <div class="hr"></div>
+
+      <div class="grid">
+        <section>
+          <span class="label">Schwerpunkte</span>
+          <div class="muted">
+            Digitalisierung von Prozessen · ERP (Business Central) · Transformation · Stakeholderführung · Shopfloor–IT-Brücke
+          </div>
+        </section>
+        <section>
+          <span class="label">Technik</span>
+          <div class="muted">
+            MS Dynamics 365 BC · AL · MDE/Scannerprozesse · Power BI · C#/C++ (Grundlagen)
+          </div>
+        </section>
+        <section>
+          <span class="label">Stärken</span>
+          <div class="muted">
+            strukturierte Umsetzung · klare Kommunikation · Verantwortungsübernahme · Veränderungsführung
+          </div>
+        </section>
+        <section>
+          <span class="label">Sprachen</span>
+          <div class="muted">
+            Deutsch (C2), Englisch (B2)
+          </div>
+        </section>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="muted">
+        Für detaillierte Einblicke sende ich auf Anfrage den ausführlichen CV zu.
+      </div>
+
+      <div class="actions">
+        <a id="mailBtn" class="btn" href="#" rel="noopener">E-Mail schreiben</a>
+        <button id="copyBtn" class="btn secondary" type="button">E-Mail kopieren</button>
+        <span class="muted">Kein Formular, keine Speicherung. Lokales Mail-Programm.</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const emailCodes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
+  const target = emailCodes.map(c => String.fromCharCode(c)).join('');
+  const subject = encodeURIComponent('Kontakt – Philip Adam');
+  const body = encodeURIComponent([
+    'Hallo Philip,',
+    '',
+    '(Optional) Kurz der Anlass: ',
+    '',
+    'Viele Grüße'
+  ].join('\n'));
+  const mailto = `mailto:${encodeURIComponent(target)}?subject=${subject}&body=${body}`;
+
+  const mailBtn = document.getElementById('mailBtn');
+  const copyBtn = document.getElementById('copyBtn');
+
+  mailBtn.addEventListener('click', function(){
+    this.setAttribute('href', mailto);
+    try { window.location.href = mailto; } catch(_) {}
+  }, { once:true });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(target);
+      copyBtn.textContent = '✓ Kopiert';
+      setTimeout(()=>copyBtn.textContent='E-Mail kopieren',1500);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = target; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyBtn.textContent = '✓ Kopiert';
+      setTimeout(()=>copyBtn.textContent='E-Mail kopieren',1500);
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
