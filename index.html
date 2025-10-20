@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
 <title>vc · Philip Adam</title>
 <style>
   :root{ --brand:#003366; --muted:#5f6b7a; --bg:#f6f8fb; --card:#fff; }
@@ -40,7 +42,7 @@
       <div class="row" style="margin-top:10px;">
         <div class="col" style="flex:0 0 220px;">
           <label for="code">Code</label>
-          <input id="code" type="text" autocomplete="off" placeholder="z. B. AD-8621">
+          <input id="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="z. B. PA2025" autofocus>
         </div>
       </div>
       <div class="actions">
@@ -140,14 +142,24 @@
 
 <script>
 (function(){
-  // ====== CONFIG ======
-  // Universal-Code (auf Karte aufgedruckt):
-  const ACCESS_CODE = "AD-8621"; // <--- HIER DEINEN CODE SETZEN
+  // ===== Helpers =====
+  function normalize(s){
+    return (s || "").trim().toUpperCase().replace(/[\s-]+/g, "");
+  }
+  async function sha256Hex(str){
+    const enc = new TextEncoder().encode(str);
+    const buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  // ===== Konfiguration: Hash des normalisierten Codes "PA2025" =====
+  const CODE_HASH = "78be3e15867ca2669b2ddaa6a1b439a9ec81a4ef9820854b7a3885d8c6cee95a";
+
   // Ziel-Mail (verschleiert: "adam.card.service@protonmail.com")
   const emailCodes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
   const TARGET_MAIL = emailCodes.map(c => String.fromCharCode(c)).join('');
 
-  // ====== Gate Logic ======
+  // ===== Gate Logic =====
   const codeInput = document.getElementById('code');
   const unlockBtn = document.getElementById('unlock');
   const gateErr = document.getElementById('gateErr');
@@ -155,23 +167,30 @@
   const profile = document.getElementById('profile');
   const contact = document.getElementById('contact');
 
-  unlockBtn.addEventListener('click', function(){
+  // UX: Enter im Codefeld erlaubt + Fehlermeldung bei Eingabe ausblenden
+  codeInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ unlockBtn.click(); } });
+  codeInput.addEventListener('input', ()=>{ gateErr.style.display = 'none'; });
+
+  unlockBtn.addEventListener('click', async function(){
     gateErr.style.display = 'none';
-    const val = (codeInput.value || '').trim();
-    if (!val) { gateErr.style.display = 'block'; return; }
-    if (val.toUpperCase() === ACCESS_CODE.toUpperCase()){
+    const raw = (codeInput.value || "");
+    if (!raw.trim()){ gateErr.style.display = 'block'; codeInput.focus(); return; }
+
+    const norm = normalize(raw);
+    const h = await sha256Hex(norm);
+
+    if (h === CODE_HASH){
       gate.style.display = 'none';
       profile.style.display = 'block';
       contact.style.display = 'block';
-      // Focus auf Name im Kontakt
       setTimeout(()=> document.getElementById('name').focus(), 150);
     } else {
       gateErr.style.display = 'block';
+      codeInput.select(); codeInput.focus();
     }
   });
 
-  // ====== Kontakt (mailto) ======
-  // Captcha (klein, zufällig)
+  // ===== Kontakt (mailto) =====
   const a = Math.floor(2 + Math.random()*7), b = Math.floor(1 + Math.random()*8);
   const ans = a + b;
   document.getElementById('capQ').textContent = `Bitte lösen: ${a} + ${b} = ?`;
