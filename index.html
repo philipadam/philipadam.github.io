@@ -8,7 +8,7 @@
 <!-- Sicherheit (statisch, ohne externe Abhängigkeiten) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
 <meta name="referrer" content="no-referrer">
-<meta name="robots" content="index,follow"><!-- auf 'index,follow' ändern, wenn du indexiert werden willst -->
+<meta name="robots" content="index,follow">
 
 <style>
   :root{
@@ -28,7 +28,8 @@
   .muted{ color:var(--muted); }
   .actions{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
   .btn{ background:var(--brand); color:#fff; border:none; padding:12px 16px; border-radius:10px;
-    font-weight:700; text-decoration:none; display:inline-block; }
+    font-weight:700; text-decoration:none; display:inline-block; cursor:pointer; }
+  .btn.secondary{ background:transparent; color:var(--brand); border:1px solid var(--brand); }
   .btn:focus{ outline:2px solid #99b; outline-offset:2px; }
   @keyframes fade{ from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none} }
 </style>
@@ -76,13 +77,13 @@
 
       <div class="actions">
         <a id="mailBtn" class="btn" href="#" rel="noopener">E-Mail schreiben</a>
-        <span class="muted">Öffnet Ihr lokales E-Mail-Programm (kein Formular, keine Speicherung).</span>
+        <button id="copyBtn" class="btn secondary" type="button">E-Mail kopieren</button>
+        <span class="muted">Kein Formular, keine Speicherung. Lokales Mail-Programm.</span>
       </div>
     </div>
   </div>
 
 <script>
-/* E-Mail wird clientseitig zusammengesetzt (kleine Obfuskation gegen Scraper) */
 (function(){
   const emailCodes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
   const target = emailCodes.map(c => String.fromCharCode(c)).join('');
@@ -95,8 +96,30 @@
     'Viele Grüße'
   ].join('\n'));
   const mailto = `mailto:${encodeURIComponent(target)}?subject=${subject}&body=${body}`;
-  const a = document.getElementById('mailBtn');
-  a.setAttribute('href', mailto);
+
+  const mailBtn = document.getElementById('mailBtn');
+  const copyBtn = document.getElementById('copyBtn');
+
+  mailBtn.addEventListener('click', function(){
+    this.setAttribute('href', mailto);
+    try { window.location.href = mailto; } catch(_) {}
+  }, { once:true });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(target);
+      copyBtn.textContent = '✓ Kopiert';
+      setTimeout(()=>copyBtn.textContent='E-Mail kopieren',1500);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = target; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      document.body.removeChild(ta);
+      copyBtn.textContent = '✓ Kopiert';
+      setTimeout(()=>copyBtn.textContent='E-Mail kopieren',1500);
+    }
+  });
+
 })();
 </script>
 </body>
