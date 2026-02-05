@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Philip Adam · Projektmanager (Digitalisierung & Prozesse)</title>
+<title>Philip Adam · Projekt- & Prozessmanager (ERP/WMS)</title>
 
 <!-- Sicherheit (statisch, ohne externe Abhängigkeiten) -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;">
@@ -21,7 +21,12 @@
   .card{ background:var(--card); border:1px solid var(--border); border-left:6px solid var(--brand);
     border-radius:12px; padding:24px; box-shadow:var(--shadow); }
   h1{ margin:0 0 6px; color:var(--brand); font-size:26px; font-weight:800; letter-spacing:.2px; }
-  .role{ margin:.5px 0 14px; color:var(--muted); font-style:italic; }
+  .role{ margin:.5px 0 10px; color:var(--muted); font-style:italic; }
+  .availability{
+    display:inline-block; margin:6px 0 10px; padding:8px 10px; border-radius:10px;
+    border:1px solid var(--border); background:#fff;
+  }
+  .availability b{ color:var(--brand); }
   .hr{ height:1px; background:var(--border); margin:18px 0; }
   .grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
   .label{ font-weight:700; color:#233; margin-bottom:6px; display:block; }
@@ -38,29 +43,37 @@
   <div class="wrap">
     <div class="card" role="main" aria-labelledby="title">
       <h1 id="title">Philip Adam</h1>
-      <div class="role">Projektmanager (Digitalisierung & Prozesse)</div>
+      <div class="role">Projekt- &amp; Prozessmanager · ERP-nahe Digitalisierung (WMS/MDE)</div>
+
+      <div class="availability" aria-label="Verfügbarkeit">
+        <b>Verfügbarkeit:</b> Start <b>August 2026</b> · Vorabgespräche &amp; Perspektivplanung ausdrücklich erwünscht.
+      </div>
 
       <div class="hr"></div>
 
       <div class="grid">
         <section>
-          <span class="label">Schwerpunkte</span>
+          <span class="label">Profil</span>
           <div class="muted">
-            Digitalisierung von Prozessen · ERP (Business Central) · Transformation · Stakeholderführung · Shopfloor–IT-Brücke
+            12+ Jahre operative Logistik- und Führungserfahrung (Ø ~20 MA) &amp; ERP-nahe Digitalisierung.
+            Brücke zwischen Shopfloor, Key-Usern und IT/Entwicklung.
           </div>
         </section>
+
+        <section>
+          <span class="label">Schwerpunkte</span>
+          <div class="muted">
+            Prozessanalyse &amp; -design · Umsetzung &amp; Etablierung · Stakeholderführung · Anforderungen → Lösungen
+          </div>
+        </section>
+
         <section>
           <span class="label">Technik</span>
           <div class="muted">
-            MS Dynamics 365 BC · AL · MDE/Scannerprozesse · Power BI · C#/C++ (Grundlagen)
+            Microsoft Dynamics 365 Business Central · WMS/MDE-Scannerprozesse · AL · Power BI · C#/C++ (Basics)
           </div>
         </section>
-        <section>
-          <span class="label">Stärken</span>
-          <div class="muted">
-            strukturierte Umsetzung · klare Kommunikation · Verantwortungsübernahme · Veränderungsführung
-          </div>
-        </section>
+
         <section>
           <span class="label">Sprachen</span>
           <div class="muted">
@@ -72,7 +85,7 @@
       <div class="hr"></div>
 
       <div class="muted">
-        Für detaillierte Einblicke sende ich auf Anfrage den ausführlichen CV zu.
+        Für Details sende ich den ausführlichen CV gern auf Anfrage.
       </div>
 
       <div class="actions">
@@ -85,13 +98,16 @@
 
 <script>
 (function(){
-  const emailCodes = [97,100,97,109,46,99,97,114,100,46,115,101,114,118,105,99,101,64,112,114,111,116,111,110,109,97,105,108,46,99,111,109];
+  const emailCodes = [109,97,105,108,64,112,104,105,108,105,112,97,100,97,109,46,100,101];
+
   const target = emailCodes.map(c => String.fromCharCode(c)).join('');
   const subject = encodeURIComponent('Kontakt – Philip Adam');
   const body = encodeURIComponent([
     'Hallo Philip,',
     '',
-    '(Optional) Kurz der Anlass: ',
+    'ich interessiere mich für ein kurzes Vorabgespräch (Start ab August 2026).',
+    '',
+    'Anlass / Kontext:',
     '',
     'Viele Grüße'
   ].join('\n'));
