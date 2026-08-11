@@ -1,0 +1,5 @@
+# Quelldokumente der Projektarbeit - NICHT veroeffentlichen.
+# Enthalten interne Kennzahlen, Kundendaten und personenbezogene Angaben.
+# Dieses Repository wird als GitHub Pages ausgeliefert: alles Eingecheckte ist oeffentlich.
+*.docx
+*.pptx
