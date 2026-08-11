@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Philip Adam — zwei Apps und ein Abschlussprojekt</title>
-<meta name="description" content="ERP-Berater und Application Manager aus Wallenhorst. Zwei selbst gebaute Android-Apps und eine Business-Central-Erweiterung: von der Anforderung bis zum laufenden Ergebnis.">
+<meta name="description" content="ERP-Berater und Application Manager aus Wallenhorst. Zwei selbst gebaute Android-Apps und eine selbst entwickelte Business-Central-Erweiterung: von der Anforderung bis zum laufenden Ergebnis.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://vc.philipadam.de/">
@@ -30,7 +30,7 @@
 <nav class="bar">
   <div class="wrap">
     <span><span class="dot"></span>vc.philipadam.de</span>
-    <span><a href="#apps">Apps</a> &nbsp;·&nbsp; <a href="#projekt">Projekt</a> &nbsp;·&nbsp; <a href="#arbeitsweise">Arbeitsweise</a> &nbsp;·&nbsp; <a href="#kontakt">Kontakt</a></span>
+    <span><a href="#apps">Apps</a> &nbsp;·&nbsp; <a href="#projekt">Projekt</a> <span class="opt">&nbsp;·&nbsp; <a href="#arbeitsweise">Arbeitsweise</a></span> &nbsp;·&nbsp; <a href="#kontakt">Kontakt</a></span>
   </div>
 </nav>
 
@@ -39,11 +39,11 @@
     <p class="eyebrow">Philip Adam · ERP-Berater &amp; Application Manager · Wallenhorst</p>
     <div class="hero-grid">
       <div>
-        <h1>Zwei Apps, die es nicht gab. <em>Also habe ich sie gebaut.</em></h1>
+        <h1>Zwei Apps, die es nicht gab. <em>Ein Lagerproblem, das niemand gemessen hat.</em></h1>
         <p class="hero-lede">Ich komme aus zwölf Jahren operativer Logistik und arbeite heute an ERP-Systemen. Was ich mitbringe, steht im Lebenslauf. Was dort schwer zu belegen ist: dass ich eine Anforderung nicht nur aufschreibe, sondern bis zum laufenden Ergebnis durchziehe.</p>
-        <p class="hero-lede"><strong>Deshalb diese Seite.</strong> Zwei Android-Apps, beide aus einer Lücke entstanden, die mich selbst gestört hat. Beide nutze ich täglich.</p>
+        <p class="hero-lede"><strong>Deshalb diese Seite — in zwei Teilen.</strong> Zwei Android-Apps, beide aus einer Lücke entstanden, die mich selbst gestört hat, KI-gestützt gebaut und täglich im Einsatz. Und mein IHK-Abschlussprojekt: eine Erweiterung für Microsoft Dynamics 365 Business Central, Zeile für Zeile selbst geschrieben.</p>
         <div class="meta">
-          <span>Flutter</span><span>VS Code</span><span>Android Studio</span><span>Git / GitHub</span><span>Claude Code</span>
+          <span>Flutter</span><span>AL</span><span>Business Central</span><span>VS Code</span><span>Android Studio</span><span>Git / GitHub</span><span>Claude Code</span>
         </div>
       </div>
       <figure class="portrait">
@@ -54,154 +54,343 @@
   </div>
 </header>
 
-<!-- ============ FINANZ-APP ============ -->
-<section class="sec" id="apps">
-  <div class="wrap">
-    <p class="sec-label">App 01</p>
-    <h2>Budget-App</h2>
-    <p class="sub">Eine Haushaltsapp, die das Geld vor dem Ausgeben aufteilt statt es hinterher zu sortieren.</p>
+<!-- ================================================================
+     KAPITEL 01 — die beiden Android-Apps
+     ================================================================ -->
+<div class="chapter chapter--apps" id="apps">
 
-    <div class="app">
-      <div class="shots three">
-        <figure class="shot">
-          <img src="finanzapppics/1dashboard_status.png" alt="Budget-App Übersicht mit Vermögensaufbau und den drei Budget-Töpfen" width="499" height="1119" loading="lazy" decoding="async">
-          <figcaption>Übersicht:<br>Budget in drei Töpfen</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="finanzapppics/2buchungen.png" alt="Budget-App Buchungsliste mit Einnahmen und Ausgaben nach Datum" width="498" height="1118" loading="lazy" decoding="async">
-          <figcaption>Buchungen<br>im Verlauf</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="finanzapppics/3sparziele.png" alt="Budget-App Sparziele mit Fortschritt und voraussichtlichem Zieldatum" width="503" height="1120" loading="lazy" decoding="async">
-          <figcaption>Sparziele mit<br>Zieldatum</figcaption>
-        </figure>
-      </div>
-
-      <div class="spec">
-        <div class="spec-head"><span>Anforderungsnotiz</span><span class="st">● im Einsatz</span></div>
-        <dl>
-          <dt>Problem</dt>
-          <dd>Die meisten Haushaltsapps erfassen Ausgaben im Nachhinein. Das schafft Übersicht, aber es ändert nichts — die Entscheidung ist da längst gefallen.</dd>
-
-          <dt>Recherche</dt>
-          <dd>Artikel und Studien zum Thema liefen auf drei Punkte hinaus: Budget vor den Ausgaben aufteilen, klare Ziele setzen, und beides automatisieren. <b>Automatisierung trägt im Alltag verlässlicher als Disziplin.</b></dd>
-
-          <dt>Entscheidung</dt>
-          <dd>Das Budget wird vorab auf feste Kategorien verteilt. Das Restbudget wird bewusst zurückhaltend angezeigt — eine große freie Zahl lädt zum Ausgeben ein.</dd>
-
-          <dt>Ergebnis</dt>
-          <dd>Läuft auf meinem eigenen Gerät. Ich nutze sie täglich.</dd>
-        </dl>
-      </div>
+  <header class="chapter-head">
+    <div class="wrap">
+      <span class="ch-n">Kapitel 01 · Eigene Apps</span>
+      <h2>Zwei Android-Apps</h2>
+      <p>Beide sind entstanden, weil mir im Alltag etwas gefehlt hat: eine Haushaltsapp, die das Geld vor dem Ausgeben aufteilt, und ein Ernährungstracker, der Mikronährstoffe nach vorn holt. <b>Die Umsetzung lief KI-gestützt</b> — Anforderung, Abwägung, Entscheidung und Test kommen von mir.</p>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ============ GREENBITE ============ -->
-<section class="sec">
-  <div class="wrap">
-    <p class="sec-label">App 02</p>
-    <h2>GreenBite</h2>
-    <p class="sub">Ein Ernährungstracker, der Mikronährstoffe in den Vordergrund stellt statt sie am Rand mitlaufen zu lassen.</p>
+  <!-- ---- Budget-App ---- -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="sec-label">App 01</p>
+      <h3 class="blk-h">Budget-App</h3>
+      <p class="sub">Eine Haushaltsapp, die das Geld vor dem Ausgeben aufteilt statt es hinterher zu sortieren.</p>
 
-    <div class="app">
-      <div class="shots three">
-        <figure class="shot">
-          <img src="greenbitepics/1homescreencircle.png" alt="GreenBite Tagesübersicht mit Ring für die Tagesversorgung und Liste der Mikronährstoffe" width="864" height="1920" loading="lazy" decoding="async">
-          <figcaption>Tagesübersicht:<br>Nährstoffe zuerst</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="greenbitepics/2lebensmittelaussuchen.png" alt="GreenBite Suche nach Lebensmitteln in der Nährwertdatenbank" width="864" height="1920" loading="lazy" decoding="async">
-          <figcaption>Lebensmittel<br>auswählen</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="greenbitepics/3hinzufuegen.png" alt="GreenBite Eintrag hinzufügen mit Menge in Gramm und Auswahl der Mahlzeit" width="864" height="1920" loading="lazy" decoding="async">
-          <figcaption>Menge und Mahlzeit<br>erfassen</figcaption>
-        </figure>
-      </div>
-
-      <div class="spec">
-        <div class="spec-head"><span>Anforderungsnotiz</span><span class="st">● im Einsatz</span></div>
-        <dl>
-          <dt>Problem</dt>
-          <dd>Gängige Tracker stellen Kalorien und Makronährstoffe in den Vordergrund. Mikronährstoffe bleiben außen vor — obwohl sie eine der stärksten Stellschrauben sind.</dd>
-
-          <dt>Entscheidung</dt>
-          <dd>Die App dreht die Gewichtung um: Mikronährstoffe sind die Hauptansicht, nicht die Fußnote. Die Nährwertdaten kommen per API aus der <b>USDA-Datenbank</b> — eine gepflegte Referenz statt reiner Nutzereingaben.</dd>
-
-          <dt>Ergebnis</dt>
-          <dd>Läuft auf meinem eigenen Gerät. Ich nutze sie täglich.</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ IDENTIFICATION OF OBSTRUCTIONS ============ -->
-<section class="sec" id="projekt">
-  <div class="wrap">
-    <p class="sec-label">Abschlussprojekt</p>
-    <h2>Identification of Obstructions</h2>
-    <p class="sub">Eine Erweiterung für Microsoft Dynamics 365 Business Central, die im Wareneingang erfasst, warum ein Lagerplatz abgelehnt wurde. Meine betriebliche Projektarbeit für die IHK-Abschlussprüfung — und das einzige Projekt hier, dessen Code ich selbst geschrieben habe.</p>
-
-    <div class="teaser">
-      <a class="teaser-shot" href="ioo.html">
-        <img src="ioopics/1maske.png" alt="Mobile Maske zur Auswahl eines Ablehnungsgrundes am Staplerterminal" width="950" height="711" loading="lazy" decoding="async">
-      </a>
-      <div>
-        <p>Das System weiß, welcher Lagerplatz frei ist. Es weiß nicht, dass davor eine Palette steht. Lehnt ein Mitarbeiter den vorgeschlagenen Platz ab, verschwand dieser Grund bisher spurlos — und derselbe Platz wurde der nächsten Schicht wieder vorgeschlagen.</p>
-        <p>Die Erweiterung fragt den Grund genau dort ab, wo die Entscheidung fällt: zwei Handgriffe am Terminal, dann läuft der Wareneingang ohne Unterbrechung weiter. In Business Central entsteht daraus eine auswertbare Liste für die Lagerleitung.</p>
-        <div class="meta">
-          <span>AL</span><span>Business Central</span><span>Extension</span><span>Wasserfall</span><span>80 Stunden</span>
+      <div class="app">
+        <div class="shots three">
+          <figure class="shot">
+            <img src="finanzapppics/1dashboard_status.png" alt="Budget-App Übersicht mit Vermögensaufbau und den drei Budget-Töpfen" width="499" height="1119" loading="lazy" decoding="async">
+            <figcaption>Übersicht:<br>Budget in drei Töpfen</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="finanzapppics/2buchungen.png" alt="Budget-App Buchungsliste mit Einnahmen und Ausgaben nach Datum" width="498" height="1118" loading="lazy" decoding="async">
+            <figcaption>Buchungen<br>im Verlauf</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="finanzapppics/3sparziele.png" alt="Budget-App Sparziele mit Fortschritt und voraussichtlichem Zieldatum" width="503" height="1120" loading="lazy" decoding="async">
+            <figcaption>Sparziele mit<br>Zieldatum</figcaption>
+          </figure>
         </div>
-        <a class="cta" href="ioo.html">Projekt ansehen — Screenshots, Architektur, Test →</a>
+
+        <div class="spec">
+          <div class="spec-head"><span>Anforderungsnotiz</span><span class="st">● im Einsatz</span></div>
+          <dl>
+            <dt>Problem</dt>
+            <dd>Die meisten Haushaltsapps erfassen Ausgaben im Nachhinein. Das schafft Übersicht, aber es ändert nichts — die Entscheidung ist da längst gefallen.</dd>
+
+            <dt>Recherche</dt>
+            <dd>Artikel und Studien zum Thema liefen auf drei Punkte hinaus: Budget vor den Ausgaben aufteilen, klare Ziele setzen, und beides automatisieren. <b>Automatisierung trägt im Alltag verlässlicher als Disziplin.</b></dd>
+
+            <dt>Entscheidung</dt>
+            <dd>Das Budget wird vorab auf feste Kategorien verteilt. Das Restbudget wird bewusst zurückhaltend angezeigt — eine große freie Zahl lädt zum Ausgeben ein.</dd>
+
+            <dt>Ergebnis</dt>
+            <dd>Läuft auf meinem eigenen Gerät. Ich nutze sie täglich.</dd>
+          </dl>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ============ ARBEITSWEISE ============ -->
-<section class="sec" id="arbeitsweise">
-  <div class="wrap">
-    <p class="sec-label">Arbeitsweise</p>
-    <h2>Wie diese Apps entstanden sind</h2>
-    <p class="sub">Vier Schritte, in dieser Reihenfolge — bei beiden Apps gleich.</p>
+  <!-- ---- GreenBite ---- -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="sec-label">App 02</p>
+      <h3 class="blk-h">GreenBite</h3>
+      <p class="sub">Ein Ernährungstracker, der Mikronährstoffe in den Vordergrund stellt statt sie am Rand mitlaufen zu lassen.</p>
 
-    <div class="flow">
-      <div class="step">
-        <span class="n">Schritt 1</span>
-        <h3>Anforderung</h3>
-        <p>Was genau stört, und warum? Funktionsumfang, Priorisierung und Abgrenzung lege ich selbst fest, bevor eine Zeile entsteht.</p>
-      </div>
-      <div class="step">
-        <span class="n">Schritt 2</span>
-        <h3>Abwägung</h3>
-        <p>Umsetzungsvarianten mit Vor- und Nachteilen gegenüberstellen, dann entscheiden. Dieselbe Logik wie in der ERP-Anforderungsanalyse.</p>
-      </div>
-      <div class="step">
-        <span class="n">Schritt 3</span>
-        <h3>Umsetzung</h3>
-        <p>Schritt für Schritt bauen lassen — Claude Code an der technischen Spitze, Flutter als Framework, VS Code als Entwicklungsumgebung, Git/GitHub zur Quellcodeverwaltung.</p>
-      </div>
-      <div class="step">
-        <span class="n">Schritt 4</span>
-        <h3>Test</h3>
-        <p>Erst im Android-Studio-Emulator, dann auf dem eigenen Gerät. Was den Alltag nicht übersteht, fliegt raus.</p>
+      <div class="app">
+        <div class="shots three">
+          <figure class="shot">
+            <img src="greenbitepics/1homescreencircle.png" alt="GreenBite Tagesübersicht mit Ring für die Tagesversorgung und Liste der Mikronährstoffe" width="864" height="1920" loading="lazy" decoding="async">
+            <figcaption>Tagesübersicht:<br>Nährstoffe zuerst</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="greenbitepics/2lebensmittelaussuchen.png" alt="GreenBite Suche nach Lebensmitteln in der Nährwertdatenbank" width="864" height="1920" loading="lazy" decoding="async">
+            <figcaption>Lebensmittel<br>auswählen</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="greenbitepics/3hinzufuegen.png" alt="GreenBite Eintrag hinzufügen mit Menge in Gramm und Auswahl der Mahlzeit" width="864" height="1920" loading="lazy" decoding="async">
+            <figcaption>Menge und Mahlzeit<br>erfassen</figcaption>
+          </figure>
+        </div>
+
+        <div class="spec">
+          <div class="spec-head"><span>Anforderungsnotiz</span><span class="st">● im Einsatz</span></div>
+          <dl>
+            <dt>Problem</dt>
+            <dd>Gängige Tracker stellen Kalorien und Makronährstoffe in den Vordergrund. Mikronährstoffe bleiben außen vor — obwohl sie eine der stärksten Stellschrauben sind.</dd>
+
+            <dt>Entscheidung</dt>
+            <dd>Die App dreht die Gewichtung um: Mikronährstoffe sind die Hauptansicht, nicht die Fußnote. Die Nährwertdaten kommen per API aus der <b>USDA-Datenbank</b> — eine gepflegte Referenz statt reiner Nutzereingaben.</dd>
+
+            <dt>Ergebnis</dt>
+            <dd>Läuft auf meinem eigenen Gerät. Ich nutze sie täglich.</dd>
+          </dl>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="honest">
-      <b>Zur Einordnung:</b> Ich habe diese Apps nicht Zeile für Zeile selbst geschrieben — die Umsetzung lief KI-gestützt. Meine Arbeit war die Anforderung, die Abwägung, die Entscheidung und der Test. Ich halte das für die Arbeitsweise, auf die es in den nächsten Jahren ankommt: wissen, <b>was</b> gebaut werden muss und <b>warum</b>, und die Sache bis zum funktionierenden Ergebnis durchziehen.
+  <!-- ---- Arbeitsweise der beiden Apps ---- -->
+  <section class="sec" id="arbeitsweise">
+    <div class="wrap">
+      <p class="sec-label">Arbeitsweise</p>
+      <h3 class="blk-h">Wie diese beiden Apps entstanden sind</h3>
+      <p class="sub">Vier Schritte, in dieser Reihenfolge — bei beiden Apps gleich.</p>
+
+      <div class="flow">
+        <div class="step">
+          <span class="n">Schritt 1</span>
+          <h4>Anforderung</h4>
+          <p>Was genau stört, und warum? Funktionsumfang, Priorisierung und Abgrenzung lege ich selbst fest, bevor eine Zeile entsteht.</p>
+        </div>
+        <div class="step">
+          <span class="n">Schritt 2</span>
+          <h4>Abwägung</h4>
+          <p>Umsetzungsvarianten mit Vor- und Nachteilen gegenüberstellen, dann entscheiden. Dieselbe Logik wie in der ERP-Anforderungsanalyse.</p>
+        </div>
+        <div class="step">
+          <span class="n">Schritt 3</span>
+          <h4>Umsetzung</h4>
+          <p>Schritt für Schritt bauen lassen — Claude Code an der technischen Spitze, Flutter als Framework, VS Code als Entwicklungsumgebung, Git/GitHub zur Quellcodeverwaltung.</p>
+        </div>
+        <div class="step">
+          <span class="n">Schritt 4</span>
+          <h4>Test</h4>
+          <p>Erst im Android-Studio-Emulator, dann auf dem eigenen Gerät. Was den Alltag nicht übersteht, fliegt raus.</p>
+        </div>
+      </div>
+
+      <div class="honest">
+        <b>Zur Einordnung:</b> Diese beiden Apps habe ich nicht Zeile für Zeile selbst geschrieben — die Umsetzung lief KI-gestützt. Meine Arbeit war die Anforderung, die Abwägung, die Entscheidung und der Test. Ich halte das für die Arbeitsweise, auf die es in den nächsten Jahren ankommt: wissen, <b>was</b> gebaut werden muss und <b>warum</b>, und die Sache bis zum funktionierenden Ergebnis durchziehen. Im Abschlussprojekt war es umgekehrt — dazu Kapitel 02.
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+</div>
+
+<!-- ================================================================
+     KAPITEL 02 — Abschlussprojekt Identification of Obstructions
+     ================================================================ -->
+<div class="chapter chapter--ioo" id="projekt">
+
+  <header class="chapter-head is-dark">
+    <div class="wrap">
+      <span class="ch-n">Kapitel 02 · IHK-Abschlussprojekt</span>
+      <h2>Identification of Obstructions</h2>
+      <p>Im Lager weiß das System, welcher Lagerplatz frei ist. Es weiß nicht, dass davor eine Palette steht. Diese Erweiterung schließt genau diese Lücke — sie fragt im laufenden Wareneingang nach dem Grund, wenn ein Mitarbeiter den vorgeschlagenen Lagerplatz ablehnt, und macht daraus auswertbare Daten.</p>
+      <p>Entstanden als betriebliche Projektarbeit für die IHK-Abschlussprüfung — als Erweiterung für Microsoft Dynamics 365 Business Central und die App SIEVERS Mobile. <b>Diesen Code habe ich selbst geschrieben</b>, ohne Claude Code; KI diente ausschließlich der Recherche zu Best Practices.</p>
+    </div>
+  </header>
+
+  <!-- ---- Eckdaten ---- -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><span class="k">Zielsystem</span><span class="v">Dynamics 365 Business&nbsp;Central</span></div>
+        <div class="fact"><span class="k">Sprache</span><span class="v">AL</span></div>
+        <div class="fact"><span class="k">Umsetzung</span><span class="v">selbst entwickelt</span></div>
+        <div class="fact"><span class="k">Vorgehen</span><span class="v">Wasserfallmodell</span></div>
+        <div class="fact"><span class="k">Umfang</span><span class="v">80 Stunden</span></div>
+        <div class="fact"><span class="k">Zeitraum</span><span class="v">Februar – Mai 2026</span></div>
+        <div class="fact"><span class="k">Status</span><span class="v">abgenommen</span></div>
+      </div>
+
+      <div class="meta">
+        <span>AL</span><span>Business Central</span><span>SIEVERS Mobile</span><span>VS Code</span><span>Docker</span><span>Azure DevOps</span><span class="ki">KI nur zur Recherche (Best Practices)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Ausgangslage ---- -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="sec-label">Ausgangslage</p>
+      <h3 class="blk-h">Der blinde Fleck im Wareneingang</h3>
+      <p class="sub">Zwölf Jahre operative Logistik haben mir dieses Problem gezeigt, bevor ich es programmieren konnte.</p>
+
+      <div class="duo">
+        <div>
+          <p>Ein Lagermitarbeiter scannt am Staplerterminal das Palettenlabel. Das System schlägt einen Lagerplatz vor. In der Theorie fährt er hin und lagert ein.</p>
+          <p>In der Praxis ist der Platz regelmäßig nicht nutzbar: eine beschädigte Traverse, ein blockierter Weg, eine Nachbarpalette mit Überbreite. Der Mitarbeiter lehnt den Vorschlag ab, sucht auf Sicht einen freien Platz und lagert dort ein. Der Prozess läuft weiter — <b>aber der Grund verschwindet.</b></p>
+          <p>Damit bleibt derselbe problematische Lagerplatz im System weiterhin frei und wird der nächsten Schicht erneut vorgeschlagen. Das Problem vererbt sich, ohne je irgendwo aufzutauchen. Zwischen der systemischen Auslastung und der physischen Realität im Lager entsteht eine Lücke, die niemand beziffern kann.</p>
+        </div>
+        <div class="spec">
+          <div class="spec-head"><span>Anforderungsnotiz</span><span class="st">● abgenommen</span></div>
+          <dl>
+            <dt>Problem</dt>
+            <dd>Abweichungen vom vorgeschlagenen Lagerplatz werden nicht erfasst. Der Lagerleitung fehlt die Grundlage, um wiederkehrende Hindernisse zu erkennen.</dd>
+
+            <dt>Anforderung</dt>
+            <dd>Den Grund genau dort abfragen, wo die Entscheidung fällt — ohne den Arbeitsablauf zu unterbrechen und ohne den bestehenden Prozess zu verändern.</dd>
+
+            <dt>Entscheidung</dt>
+            <dd>Zwei Handgriffe, mehr nicht: Grund antippen, bestätigen. <b>Alles, was länger dauert, wird im Eiltempo des Wareneingangs umgangen.</b></dd>
+
+            <dt>Ergebnis</dt>
+            <dd>Erweiterung abgenommen und Bestandteil der Lösung.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <figure class="shot photo">
+        <img src="ioopics/dasProblem.png" alt="Palettenregal im Lager: eine überstehende Palette ragt in den benachbarten Stellplatz, der darunterliegende Platz ist dadurch nicht mehr anfahrbar" width="1335" height="829" loading="lazy" decoding="async">
+        <figcaption>Genau das meint „Hindernis“: Die Palette darüber steht über, der Platz darunter ist im System frei — physisch aber nicht nutzbar. <b>Symbolbild</b>, privat aufgenommen, nicht aus dem Ausbildungsbetrieb und ohne Rückschluss auf ein Unternehmen.</figcaption>
+      </figure>
+
+      <p class="statement">Solange Hindernisse im Lager nicht erfasst werden, bildet die systemische Auslastung nicht die physische Realität ab.</p>
+    </div>
+  </section>
+
+  <!-- ---- Lösung ---- -->
+  <section class="sec" id="loesung">
+    <div class="wrap">
+      <p class="sec-label">Die Lösung</p>
+      <h3 class="blk-h">Vier Bilder, ein Ablauf</h3>
+      <p class="sub">Von der Ablehnung am Terminal bis zur auswertbaren Liste für die Lagerleitung.</p>
+
+      <div class="steps-visual">
+
+        <figure class="shot wide">
+          <span class="num">01</span>
+          <div class="spot">
+            <img src="ioopics/2wareneingang.png" alt="Wareneingangsmaske am Staplerterminal: alle Felder sind unscharf abgeblendet, klar bleibt allein die Schaltfläche „Neuer LP“ unten links" width="958" height="720" loading="lazy" decoding="async">
+            <span class="veil" aria-hidden="true"></span>
+            <span class="spot-ring" aria-hidden="true"></span>
+          </div>
+          <figcaption><b>Der Auslöser.</b> Der Mitarbeiter steht in der Wareneingangsmaske und kann den vorgeschlagenen Lagerplatz nicht nutzen. Von der ganzen Maske zählt an dieser Stelle genau eine Schaltfläche: „Neuer LP“ — der bestehende Weg, um einen alternativen Platz anzufordern. Genau dort hängt sich die Erweiterung ein.</figcaption>
+        </figure>
+
+        <figure class="shot wide">
+          <span class="num">02</span>
+          <img src="ioopics/1maske.png" alt="Mobile Maske mit der Liste der Ablehnungsgründe und einer Bestätigen-Schaltfläche" width="950" height="711" loading="lazy" decoding="async">
+          <figcaption><b>Die Abfrage.</b> Die Maske öffnet sich automatisch, im Kopf steht der abgelehnte Lagerort. Große Flächen, hoher Kontrast, keine Tastatur — bedienbar mit Handschuhen und in Bewegung. Auswählen, bestätigen, weiter.</figcaption>
+        </figure>
+
+        <figure class="shot wide">
+          <span class="num">03</span>
+          <img src="ioopics/3einrichtung.png" alt="Einrichtungsseite in Business Central mit Statusanzeige und Liste der Hindernisgründe" width="1191" height="789" loading="lazy" decoding="async">
+          <figcaption><b>Die Steuerung.</b> In Business Central pflegt die Lagerleitung die Gründe selbst: anlegen, einzeln aktivieren, Reihenfolge festlegen. Ein Schalter aktiviert oder deaktiviert die gesamte Erweiterung — wenn im Lager gerade keine Zeit dafür ist, ist sie aus.</figcaption>
+        </figure>
+
+        <figure class="shot wide">
+          <span class="num">04</span>
+          <img src="ioopics/4protokoll.png" alt="Protokollliste in Business Central mit Lagerplatz, Zeitstempel und Hinderniscode je Eintrag" width="1148" height="705" loading="lazy" decoding="async">
+          <figcaption><b>Das Ergebnis.</b> Jede Ablehnung landet als Datensatz im Protokoll — mit Lagerplatz, Zeitstempel und Grund. Filterbar über die Standardmittel von Business Central. Aus einem Vorgang, den vorher niemand gesehen hat, wird eine Zahl, mit der die Lagerleitung argumentieren kann.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Technik ---- -->
+  <section class="sec" id="technik">
+    <div class="wrap">
+      <p class="sec-label">Technische Umsetzung</p>
+      <h3 class="blk-h">Danebensetzen statt reinschreiben</h3>
+      <p class="sub">Die wichtigste Entscheidung war, den bestehenden Prozess nicht anzufassen.</p>
+
+      <div class="spec">
+        <div class="spec-head"><span>Entwurfsentscheidungen</span><span class="st">● umgesetzt</span></div>
+        <dl>
+          <dt>Architektur</dt>
+          <dd>Die Lösung ist keine eigene Anwendung, sondern eine <b>Extension</b>, die neben der bestehenden App läuft. Der Standard bleibt unverändert — das hält die Updatesicherheit hoch und die Installation in weiteren Umgebungen einfach.</dd>
+
+          <dt>Erweiterungspunkt</dt>
+          <dd>Die Anbindung läuft über ein <b>Event mit Event-Subscriber</b>. An der Stelle, an der ein alternativer Lagerplatz angefordert wird, feuert ein Ereignis; meine Logik hängt sich daran und bekommt den abgelehnten Lagerplatz übergeben. Kein Eingriff in fremden Code, klare Abgrenzung, jederzeit wieder abnehmbar.</dd>
+
+          <dt>Datenhaltung</dt>
+          <dd>Drei neue Tabellen, sauber getrennt nach Aufgabe: <b>Stammdaten</b> für die pflegbaren Gründe, ein <b>Protokoll</b> für die tatsächlichen Ablehnungen und eine <b>Einrichtung</b> für den globalen Schalter. Bestehende Tabellen wurden nicht verändert, sondern ergänzt.</dd>
+
+          <dt>Schutz der Historie</dt>
+          <dd>Protokolleinträge sind nicht editierbar. Der Grund wird als Code mitgeschrieben, damit ein Eintrag lesbar bleibt, auch wenn der zugehörige Grund später gelöscht wird. <b>Ausgewertet wird, was passiert ist — nicht, was heute noch in der Liste steht.</b></dd>
+
+          <dt>Vorgehen</dt>
+          <dd>Wasserfallmodell. Die Komponenten funktionieren nur im Zusammenspiel, einzeln ist nichts lieferbar — damit fällt inkrementelles Vorgehen aus. Die Anforderungen lagen vollständig vor, der Umfang war fest.</dd>
+        </dl>
+      </div>
+
+      <div class="figrow">
+        <figure class="shot diagram">
+          <a href="ioopics/5anwendungsfaelle.png" target="_blank" rel="noopener">
+            <img src="ioopics/5anwendungsfaelle.png" alt="UML-Anwendungsfalldiagramm mit den Akteuren Lagermitarbeiter und Lagerleiter" width="1821" height="1371" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Anwendungsfälle: zwei Akteure, zwei Welten. Der Lagermitarbeiter erfasst im laufenden Prozess, die Lagerleitung konfiguriert und wertet aus. <span class="zoom">Vollansicht öffnen ↗</span></figcaption>
+        </figure>
+        <figure class="shot diagram">
+          <a href="ioopics/6ablauf.png" target="_blank" rel="noopener">
+            <img src="ioopics/6ablauf.png" alt="UML-Aktivitätsdiagramm mit den Bahnen Lagerleiter und Lagermitarbeiter" width="1528" height="2774" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Der Ablauf in zwei Bahnen. Beide Verzweigungen führen zurück in den Standardprozess — ist die Erweiterung aus, merkt niemand etwas davon. <span class="zoom">Vollansicht öffnen ↗</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Einordnung ---- -->
+  <section class="sec">
+    <div class="wrap">
+      <p class="sec-label">Einordnung</p>
+      <h3 class="blk-h">Was ich hier selbst gemacht habe</h3>
+
+      <div class="honest">
+        <b>Selbst entwickelt — kein Claude Code.</b> Anders als bei den beiden Apps aus Kapitel 01 stammt dieser Code Zeile für Zeile von mir. KI kam ausschließlich als Rechercheinstrument zum Einsatz — um Best Practices und Lösungsansätze nachzuschlagen, nicht um Implementierung zu erzeugen. Anforderung, Entwurf, Umsetzung, Test und Dokumentation liegen bei mir. Was ich dabei am meisten mitgenommen habe, ist nichts Technisches: eine Anforderung so zu übernehmen, wie sie gemeint war, und sie auf dem Weg zur Umsetzung nicht stillschweigend umzudeuten.
+      </div>
+
+      <div class="flow three">
+        <div class="step">
+          <span class="n">Ausblick 1</span>
+          <h4>Plätze sperren</h4>
+          <p>Dauerhaft nicht nutzbare Lagerplätze könnten automatisch gesperrt werden, statt weiter vorgeschlagen zu werden.</p>
+        </div>
+        <div class="step">
+          <span class="n">Ausblick 2</span>
+          <h4>Positivdaten</h4>
+          <p>Nicht nur abgelehnte, sondern auch erfolgreich genutzte Plätze erfassen — als Basis für eine Optimierung der Einlagerstrategie.</p>
+        </div>
+        <div class="step">
+          <span class="n">Grundlage</span>
+          <h4>Modular gebaut</h4>
+          <p>Oberfläche, Geschäftslogik und Datenhaltung sind getrennt. Beide Erweiterungen wären additiv möglich, ohne Bestehendes anzufassen.</p>
+        </div>
+      </div>
+
+      <div class="paper-note">
+        <span class="k">Über das Projekt hinaus</span>
+        <p class="last">Aus zwölf Jahren operativer Logistik führe ich ein <b>Whitepaper mit Ideen, die den lagerlogistischen Alltag verbessern würden</b> — teils etablierte Best Practices, teils eigene Ansätze. „Identification of Obstructions“ ist eine davon, umgesetzt und abgenommen.</p>
+      </div>
+
+      <p class="disclaimer">Die gezeigten Screenshots stammen aus meiner Projektdokumentation und werden mit Zustimmung des Ausbildungsbetriebs verwendet. Das Foto zur Ausgangslage ist ein Symbolbild: privat aufgenommen, weder aus dem Ausbildungsbetrieb noch von einem Kunden, und ohne Rückschluss auf ein Unternehmen. Quellcode, kundenbezogene Angaben, interne Kennzahlen und personenbezogene Daten sind nicht Bestandteil dieser Darstellung.</p>
+    </div>
+  </section>
+
+</div>
 
 <!-- ============ KONTAKT ============ -->
 <section class="sec" id="kontakt">
   <div class="wrap">
     <p class="sec-label">Kontakt</p>
     <h2>Sprechen wir darüber</h2>
-    <p class="sub">Ich zeige die Apps gern live — das geht schneller als jede Beschreibung.</p>
+    <p class="sub">Apps und Projekt zeige ich gern live — das geht schneller als jede Beschreibung.</p>
 
     <div class="contact-grid">
       <div class="cc">
