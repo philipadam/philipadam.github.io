@@ -191,11 +191,114 @@ img{max-width:100%;display:block}
 .chapter-head.is-dark p{color:#C2CCC5}
 .chapter-head.is-dark p b{color:#F4F6F4}
 
+/* Zweite Zeile der Kapitelueberschrift: sagt, was der englische Projektname ist */
+.chapter-head h2 .h2-sub{
+  display:block;margin-top:12px;
+  font-family:var(--body);font-weight:500;letter-spacing:0;
+  font-size:clamp(1rem,1.9vw,1.22rem);line-height:1.35;color:var(--slate);
+}
+.chapter-head.is-dark h2 .h2-sub{color:#D2B063}
+
+/* Ausblick am Fuss des dunklen Kapitelkopfs: das Band ist ein Anfang,
+   kein Seitenende. Die Navigation selbst leisten die Karten ganz oben. */
+.chapter-head .ch-more{
+  margin-top:clamp(22px,3vw,30px);border-top:1px solid rgba(231,234,230,.18);padding-top:16px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:#D2B063;
+}
+.chapter-head .ch-more .arr{display:inline-block;margin-left:4px;animation:nudge 1.9s ease-in-out infinite}
+
+/* Uebergang am Ende von Kapitel 01: an dieser Stelle wirkte die Seite zu Ende */
+.chapter-next{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  margin-top:clamp(28px,3.8vw,42px);padding:20px 24px;
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);
+  text-decoration:none;color:inherit;
+}
+.chapter-next .k{
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:8px;
+}
+.chapter-next .t{
+  display:block;font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.28rem,2.7vw,1.7rem);line-height:1.14;color:var(--ink);
+}
+.chapter-next .d{display:block;margin-top:9px;font-size:15.3px;line-height:1.6;color:var(--slate);max-width:62ch}
+.chapter-next .arr{
+  flex:none;width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--accent);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:1.15rem;line-height:1;
+  animation:nudge 1.9s ease-in-out infinite;
+  transition:background-color .15s,color .15s;
+}
+.chapter-next:hover{border-color:var(--accent)}
+.chapter-next:hover .t{color:var(--accent)}
+.chapter-next:hover .arr{background:var(--accent);color:#fff}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media(max-width:560px){
+  .chapter-next{flex-direction:column;align-items:flex-start;gap:16px}
+}
+
 /* Blockueberschrift innerhalb eines Kapitels: eine Stufe unter dem Kapitelkopf */
 .blk-h{
   font-family:var(--display);font-weight:700;
   font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 8px;
 }
+
+/* ---------- Uebersicht: drei Projektkarten unter dem Hero ----------
+   Die Karte zum Abschlussprojekt steht zuerst und dunkel: sie fuehrt an das
+   Ende der Seite, das sonst leicht uebersehen wird. */
+.overview{--accent:var(--petrol);padding-bottom:clamp(34px,4.6vw,54px)}
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:clamp(12px,1.6vw,18px);margin-top:4px;
+}
+.card{
+  --accent:var(--petrol);
+  display:flex;flex-direction:column;
+  background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);
+  padding:20px 22px 16px;text-decoration:none;color:inherit;
+  transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.card .k{
+  font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);display:block;margin-bottom:10px;
+}
+.card .t{
+  display:block;font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.22rem,2.3vw,1.45rem);line-height:1.14;color:var(--ink);margin-bottom:9px;
+}
+.card .d{display:block;flex:1;font-size:14.8px;line-height:1.55;color:var(--slate)}
+.card .d b{font-weight:600;color:var(--ink)}
+.card .d i{font-style:italic}
+.card .go{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-top:16px;padding-top:12px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--slate);
+}
+.card .go .st{color:#2E7D52}
+.card .arr{
+  flex:none;width:28px;height:28px;border-radius:50%;
+  border:1.5px solid var(--accent);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;line-height:1;
+  transition:background-color .15s,color .15s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,33,28,.1);border-color:var(--accent)}
+.card:hover .arr{background:var(--accent);color:#fff}
+
+/* Das Abschlussprojekt traegt die Farbwelt von Kapitel 02 schon hier */
+.card--lead{
+  --accent:#D2B063;
+  background:var(--ink);border-color:var(--ink);
+}
+.card--lead .t{color:#F4F6F4}
+.card--lead .d{color:#C2CCC5}
+.card--lead .d b{color:#F4F6F4}
+.card--lead .go{border-top-color:rgba(231,234,230,.2);color:#9FACA4}
+.card--lead .go .st{color:#8FC9A4}
+.card--lead:hover{box-shadow:0 10px 26px rgba(22,33,28,.22)}
+.card--lead:hover .arr{color:var(--ink)}
 
 /* ---------- app block ---------- */
 .app{display:grid;gap:clamp(28px,4vw,44px);align-items:start}

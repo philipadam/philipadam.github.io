@@ -55,20 +55,55 @@
 </header>
 
 <!-- ================================================================
+     Uebersicht: die drei Projekte auf einen Blick, damit vor dem Scrollen
+     klar ist, was auf der Seite noch kommt.
+     ================================================================ -->
+<section class="sec overview" id="uebersicht">
+  <div class="wrap">
+    <p class="sec-label">Auf dieser Seite</p>
+    <h2>Drei Projekte</h2>
+    <p class="sub">Ein Abschlussprojekt im ERP, zwei eigene Android-Apps — jedes davon hier in voller Länge: Anforderung, Entscheidung, Ergebnis.</p>
+
+    <div class="cards">
+      <a class="card card--lead" href="#projekt">
+        <span class="k">Kapitel 02 · IHK-Abschlussprojekt</span>
+        <span class="t">Identification of Obstructions</span>
+        <span class="d">Erweiterung für Microsoft Dynamics 365 Business Central: Sie erfasst im Wareneingang, <i>warum</i> ein Lagerplatz abgelehnt wurde — und macht daraus auswertbare Daten. <b>Zeile für Zeile selbst geschrieben.</b></span>
+        <span class="go"><span class="st">● abgenommen</span><span class="arr" aria-hidden="true">↓</span></span>
+      </a>
+
+      <a class="card" href="#budget">
+        <span class="k">Kapitel 01 · App 01</span>
+        <span class="t">Budget-App</span>
+        <span class="d">Eine Haushaltsapp, die das Geld vor dem Ausgeben aufteilt statt es hinterher zu sortieren. KI-gestützt gebaut, täglich im Einsatz.</span>
+        <span class="go"><span class="st">● im Einsatz</span><span class="arr" aria-hidden="true">↓</span></span>
+      </a>
+
+      <a class="card" href="#greenbite">
+        <span class="k">Kapitel 01 · App 02</span>
+        <span class="t">GreenBite</span>
+        <span class="d">Ein Nährstoffrechner, der Mikronährstoffe in den Vordergrund stellt statt sie am Rand mitlaufen zu lassen. Daten aus der USDA-Datenbank.</span>
+        <span class="go"><span class="st">● im Einsatz</span><span class="arr" aria-hidden="true">↓</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
      KAPITEL 01 — die beiden Android-Apps
      ================================================================ -->
 <div class="chapter chapter--apps" id="apps">
 
   <header class="chapter-head">
     <div class="wrap">
-      <span class="ch-n">Kapitel 01 · Eigene Apps</span>
+      <span class="ch-n">Kapitel 01 von 02 · Eigene Apps</span>
       <h2>Zwei Android-Apps</h2>
       <p>Beide sind entstanden, weil mir im Alltag etwas gefehlt hat: eine Haushaltsapp, die das Geld vor dem Ausgeben aufteilt, und ein Ernährungstracker, der Mikronährstoffe nach vorn holt. <b>Die Umsetzung lief KI-gestützt</b> — Anforderung, Abwägung, Entscheidung und Test kommen von mir.</p>
     </div>
   </header>
 
   <!-- ---- Budget-App ---- -->
-  <section class="sec">
+  <section class="sec" id="budget">
     <div class="wrap">
       <p class="sec-label">App 01</p>
       <h3 class="blk-h">Budget-App</h3>
@@ -111,7 +146,7 @@
   </section>
 
   <!-- ---- GreenBite ---- -->
-  <section class="sec">
+  <section class="sec" id="greenbite">
     <div class="wrap">
       <p class="sec-label">App 02</p>
       <h3 class="blk-h">GreenBite</h3>
@@ -183,6 +218,16 @@
       <div class="honest">
         <b>Zur Einordnung:</b> Diese beiden Apps habe ich nicht Zeile für Zeile selbst geschrieben — die Umsetzung lief KI-gestützt. Meine Arbeit war die Anforderung, die Abwägung, die Entscheidung und der Test. Ich halte das für die Arbeitsweise, auf die es in den nächsten Jahren ankommt: wissen, <b>was</b> gebaut werden muss und <b>warum</b>, und die Sache bis zum funktionierenden Ergebnis durchziehen. Im Abschlussprojekt war es umgekehrt — dazu Kapitel 02.
       </div>
+
+      <!-- Uebergang: hier endet die Seite nicht, hier faengt das Hauptprojekt an -->
+      <a class="chapter-next" href="#projekt">
+        <span class="col">
+          <span class="k">Weiter · Kapitel 02 von 02</span>
+          <span class="t">Identification of Obstructions</span>
+          <span class="d">Mein IHK-Abschlussprojekt — eine Erweiterung für Microsoft Dynamics 365 Business Central, Zeile für Zeile selbst geschrieben. Ausgangslage, Lösung in vier Bildern, technische Umsetzung und Einordnung.</span>
+        </span>
+        <span class="arr" aria-hidden="true">↓</span>
+      </a>
     </div>
   </section>
 
@@ -195,10 +240,12 @@
 
   <header class="chapter-head is-dark">
     <div class="wrap">
-      <span class="ch-n">Kapitel 02 · IHK-Abschlussprojekt</span>
-      <h2>Identification of Obstructions</h2>
+      <span class="ch-n">Kapitel 02 von 02 · IHK-Abschlussprojekt</span>
+      <h2>Identification of Obstructions<span class="h2-sub">Das Hauptprojekt dieser Seite — eine selbst entwickelte Erweiterung für das Lager</span></h2>
       <p>Im Lager weiß das System, welcher Lagerplatz frei ist. Es weiß nicht, dass davor eine Palette steht. Diese Erweiterung schließt genau diese Lücke — sie fragt im laufenden Wareneingang nach dem Grund, wenn ein Mitarbeiter den vorgeschlagenen Lagerplatz ablehnt, und macht daraus auswertbare Daten.</p>
       <p>Entstanden als betriebliche Projektarbeit für die IHK-Abschlussprüfung — als Erweiterung für Microsoft Dynamics 365 Business Central und die App SIEVERS Mobile. <b>Diesen Code habe ich selbst geschrieben</b>, ohne Claude Code; KI diente ausschließlich der Recherche zu Best Practices.</p>
+
+      <p class="ch-more">Es folgen: Ausgangslage · die Lösung in vier Bildern · technische Umsetzung · Einordnung <span class="arr" aria-hidden="true">↓</span></p>
     </div>
   </header>
 
@@ -222,7 +269,7 @@
   </section>
 
   <!-- ---- Ausgangslage ---- -->
-  <section class="sec">
+  <section class="sec" id="ausgangslage">
     <div class="wrap">
       <p class="sec-label">Ausgangslage</p>
       <h3 class="blk-h">Der blinde Fleck im Wareneingang</h3>
@@ -347,7 +394,7 @@
   </section>
 
   <!-- ---- Einordnung ---- -->
-  <section class="sec">
+  <section class="sec" id="einordnung">
     <div class="wrap">
       <p class="sec-label">Einordnung</p>
       <h3 class="blk-h">Was ich hier selbst gemacht habe</h3>
